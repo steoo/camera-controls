@@ -36,12 +36,7 @@ export default class CameraControls extends EventDispatcher {
     
   }
   
-  constructor(object, domElement, options = {
-    keepMousedownListener   : true,
-    keepTouchstartListener  : true,
-    keepWheelListener       : true,
-    keepContextmenuListener : true,
-  }) {
+  constructor(object, domElement, _options = {}) {
     
     super()
     
@@ -89,6 +84,14 @@ export default class CameraControls extends EventDispatcher {
     this._dollyControlCoord = new THREE.Vector2()
     this._hasUpdated = true
     this.update(0)
+    
+    
+    const options = Object.assign({}, {
+      keepMousedownListener: true,
+      keepTouchstartListener: true,
+      keepWheelListener: true,
+      keepContextmenuListener: true
+    }, _options)
     
     if (!this.domElement || options.ignoreDOMEventListeners) {
       
