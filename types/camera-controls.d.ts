@@ -17,6 +17,9 @@ export default class CameraControls extends EventDispatcher {
       keepTouchstartListener?: boolean
       keepWheelListener?: boolean
       keepContextmenuListener?: boolean
+      disableTouchRotation?: boolean
+      disableThreeFingerTouchTruck?: boolean
+      disableTwoFingerTouchTruck?: boolean
     }
   );
 

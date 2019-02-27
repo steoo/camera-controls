@@ -67,7 +67,9 @@ const cameraControls = new CameraControls( camera, renderer.domElement, {/*
   - `keepTouchstartListener`: Default is `true`, if `false`, `Touchstart` `event` listener won't be added to the element
   - `keepWheelListener`: Default is `true`, if `false`, `Wheel` `event` listener won't be added to the element
   - `keepContextmenuListener`: Default is `true`, if `false`, `Contextmenu` `event` listener won't be added to the element
-
+  - `disableTouchRotation`: Default is `false`. if `true`, one finger touch does not provide a rotation on mobile
+  - `disableTwoFingerTouchTruck`: Default is `false`. if `true`, two finger touch only zoom in and out with no truck
+  - `disableThreeFingerTouchTruck`: Default is `false`. if `true`, three finger touch does not produce truck
 
 
 ## Terms

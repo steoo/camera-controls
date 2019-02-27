@@ -295,6 +295,8 @@ function (_EventDispatcher) {
         switch (event.touches.length) {
           case 1:
             // one-fingered touch: rotate
+            // disable one-fingered touch rotation
+            if (options.disableTouchRotation) break;
             scope._state = STATE.TOUCH_ROTATE;
             break;
 
@@ -305,6 +307,8 @@ function (_EventDispatcher) {
 
           case 3:
             // three-fingered touch: truck
+            // disable three-fingered touch rotation
+            if (options.disableThreeFingerTouchTruck) break;
             scope._state = STATE.TOUCH_TRUCK;
             break;
         }
@@ -409,7 +413,7 @@ function (_EventDispatcher) {
             var dollyY = scope.dollyToCursor ? (dragStart.y - elementRect.top) / elementRect.height * -2 + 1 : 0;
             dollyInternal(dollyDelta / touchDollyFactor, dollyX, dollyY);
             dollyStart.set(0, distance);
-            truckInternal(deltaX, deltaY);
+            if (!options.disableTwoFingerTouchTruck) truckInternal(deltaX, deltaY);
             break;
 
           case STATE.TRUCK:
