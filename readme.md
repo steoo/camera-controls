@@ -1,7 +1,7 @@
 # camera-controls
 A camera control for three.js, similar to THREE.OrbitControls yet supports smooth transitions and es6 import.
 
-##Why this fork
+## Why this fork
 I forked this project to add `options` that let you customize which type of `events` you want to bind. 
 I needed only the `wheel` `event` and this event allows you to isolate and have only the events you need. 
 More in the `constructor` section 

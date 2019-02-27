@@ -194,12 +194,7 @@
 	  function CameraControls(object, domElement) {
 	    var _this;
 
-	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
-	      keepMousedownListener: true,
-	      keepTouchstartListener: true,
-	      keepWheelListener: true,
-	      keepContextmenuListener: true
-	    };
+	    var _options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
 	    _classCallCheck(this, CameraControls);
 
@@ -245,6 +240,13 @@
 	    _this._hasUpdated = true;
 
 	    _this.update(0);
+
+	    var options = Object.assign({}, {
+	      keepMousedownListener: true,
+	      keepTouchstartListener: true,
+	      keepWheelListener: true,
+	      keepContextmenuListener: true
+	    }, _options);
 
 	    if (!_this.domElement || options.ignoreDOMEventListeners) {
 	      _this._removeAllEventListeners = function () {};
