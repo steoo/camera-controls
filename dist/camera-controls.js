@@ -194,7 +194,12 @@
 	  function CameraControls(object, domElement) {
 	    var _this;
 
-	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+	      keepMousedownListener: true,
+	      keepTouchstartListener: true,
+	      keepWheelListener: true,
+	      keepContextmenuListener: true
+	    };
 
 	    _classCallCheck(this, CameraControls);
 
@@ -487,14 +492,10 @@
 	      var dragStart = new THREE.Vector2();
 	      var dollyStart = new THREE.Vector2();
 	      var elementRect;
-
-	      _this.domElement.addEventListener('mousedown', onMouseDown);
-
-	      _this.domElement.addEventListener('touchstart', onTouchStart);
-
-	      _this.domElement.addEventListener('wheel', onMouseWheel);
-
-	      _this.domElement.addEventListener('contextmenu', onContextMenu);
+	      options.keepMousedownListener && _this.domElement.addEventListener('mousedown', onMouseDown);
+	      options.keepTouchstartListener && _this.domElement.addEventListener('touchstart', onTouchStart);
+	      options.keepWheelListener && _this.domElement.addEventListener('wheel', onMouseWheel);
+	      options.keepContextmenuListener && _this.domElement.addEventListener('contextmenu', onContextMenu);
 
 	      _this._removeAllEventListeners = function () {
 	        scope.domElement.removeEventListener('mousedown', onMouseDown);

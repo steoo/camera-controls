@@ -1,6 +1,10 @@
 # camera-controls
-
 A camera control for three.js, similar to THREE.OrbitControls yet supports smooth transitions and es6 import.
+
+##Why this fork
+I forked this project to add `options` that let you customize which type of `events` you want to bind. 
+I needed only the `wheel` `event` and this event allows you to isolate and have only the events you need. 
+More in the `constructor` section 
 
 [![Latest NPM release](https://img.shields.io/npm/v/camera-controls.svg)](https://www.npmjs.com/package/camera-controls)
 
@@ -27,7 +31,12 @@ CameraControls.install( { THREE: THREE } );
 // snip ( init three scene... )
 const clock = new THREE.Clock();
 const camera = new THREE.PerspectiveCamera( 60, width / height, 0.01, 100 );
-const cameraControls = new CameraControls( camera, renderer.domElement );
+const cameraControls = new CameraControls( camera, renderer.domElement, {/*
+  keepMousedownListener: boolean,
+  keepTouchstartListener: boolean,
+  keepWheelListener: boolean,
+  keepContextmenuListener: boolean,
+*/});
 
 ( function anim () {
 
@@ -54,6 +63,12 @@ const cameraControls = new CameraControls( camera, renderer.domElement );
 - `domElement` is a HTML element for draggable area.
 - `options` in Object.
   - `ignoreDOMEventListeners`: Default is `false`. if `true`, Mouse and touch event listeners will be ignored, and you can attach your handlers instead.
+  - `keepMousedownListener`: Default is `true`, if `false`, `Mousedown` `event` listener won't be added to the element
+  - `keepTouchstartListener`: Default is `true`, if `false`, `Touchstart` `event` listener won't be added to the element
+  - `keepWheelListener`: Default is `true`, if `false`, `Wheel` `event` listener won't be added to the element
+  - `keepContextmenuListener`: Default is `true`, if `false`, `Contextmenu` `event` listener won't be added to the element
+
+
 
 ## Terms
 

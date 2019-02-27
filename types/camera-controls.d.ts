@@ -11,7 +11,13 @@ export default class CameraControls extends EventDispatcher {
   constructor(
     object: THREE.PerspectiveCamera | THREE.OrthographicCamera,
     domElement?: HTMLElement,
-    options?: { ignoreDOMEventListeners?: boolean }
+    options?: {
+      ignoreDOMEventListeners?: boolean
+      keepMousedownListener?: boolean
+      keepTouchstartListener?: boolean
+      keepWheelListener?: boolean
+      keepContextmenuListener?: boolean
+    }
   );
 
   // public members
