@@ -434,7 +434,7 @@ export default class CameraControls extends EventDispatcher {
           const distance = scope._sphericalEnd.radius * dollyScale - scope._sphericalEnd.radius
           const prevRadius = scope._sphericalEnd.radius
           
-          scope.dolly(distance)
+          scope.dolly(distance, true)
           
           if (scope.dollyToCursor) {
             
@@ -514,6 +514,7 @@ export default class CameraControls extends EventDispatcher {
       
     }
     
+    // Keep the distance between min and max
     this._sphericalEnd.radius = THREE.Math.clamp(
       distance,
       this.minDistance,

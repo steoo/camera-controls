@@ -473,7 +473,7 @@ function (_EventDispatcher) {
         if (scope.object.isPerspectiveCamera) {
           var distance = scope._sphericalEnd.radius * dollyScale - scope._sphericalEnd.radius;
           var prevRadius = scope._sphericalEnd.radius;
-          scope.dolly(distance);
+          scope.dolly(distance, true);
 
           if (scope.dollyToCursor) {
             scope._dollyControlAmount += scope._sphericalEnd.radius - prevRadius;
@@ -554,7 +554,8 @@ function (_EventDispatcher) {
       if (this.object.isOrthographicCamera) {
         console.warn('dolly is not available for OrthographicCamera');
         return;
-      }
+      } // Keep the distance between min and max
+
 
       this._sphericalEnd.radius = THREE.Math.clamp(distance, this.minDistance, this.maxDistance);
 
